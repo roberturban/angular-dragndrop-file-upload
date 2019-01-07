@@ -6,13 +6,17 @@
 - MongoDB
 - Angular CLI 7.1.4
 
+## Development Considerations
+
+[Explanations and Considerations for Design](https://docs.google.com/document/d/1G2lXH7wtoCh5COHEEINZX7VXWK4_QKUIoNL7O0TQGZM/edit?usp=sharing)
+
 ## Installation
 
 `npm install`
 
 Make sure a MongoDB server is started with `mongod`. Create a database 'angular-dropzone-file-upload' and collection 'files'.
 
-## Development server
+## Development Server
 
 - Run `npm start` for client and server to start.
 - Navigate to `http://localhost:4200/`.
