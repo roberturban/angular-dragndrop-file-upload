@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DropzoneComponent implements OnInit {
 
-  uploader = new Dropzone(‘#upload-widget’, options);
+  uploader = new Dropzone('#upload-widget', {
+    
+  });
 
   constructor() { }
 

@@ -17,3 +17,4 @@ Make sure a MongoDB server is started with `mongod`. Create a database 'angular-
 - Run `npm start` for client and server to start.
 - Navigate to `http://localhost:4200/`.
 - The app will automatically reload if you change any of the source files.
+- Run `npm run dev` for client and development server to start with `nodemon`.
