@@ -38,7 +38,8 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 
 
 /**
-* FileUpload routes
+* FileUpload Routes
 */
 const fileUpload = require('./fileUpload/fileUpload.ts');
 app.post('/fileUpload', fileUpload.handleUpload);
+app.get('/fileList', fileUpload.getAllFiles);

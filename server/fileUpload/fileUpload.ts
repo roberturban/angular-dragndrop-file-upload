@@ -3,12 +3,13 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 var fs = require('fs');
 
+var FileModel = require('./model.ts');
+
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
       cb(null, 'STORAGE_DIRECTORY/')
     },
     filename: (req, file, cb) => {
-      console.log(file);
       cb(null, file.originalname + '-' + Date.now())
     }
 })
@@ -27,12 +28,18 @@ var handler = fileUploadHandler.single('file');
 function handleUpload(req, res){
     handler(req, res, function (err) {
       if (err instanceof multer.MulterError) {
-        console.log("multererror");
+        console.log("Multer Error");
         res.status( 413 ).json({
           error : 'The file is too large'
         });
       } else if (fileValidation(req.file)){
-        res.status( 200 ).send( req.file );
+        saveFileToDB(req.file.originalname, req.file.path, req.file.size).save()
+          .then(game => {
+            res.status( 200 ).send( req.file );
+          })
+          .catch(err => {
+            res.status(400).send("Unable to save to Database");
+          });
       }
     })
 }
@@ -49,4 +56,32 @@ function fileValidation(file){
   }
 }
 
-module.exports = { handleUpload }
+/**
+* Database actions
+*/
+
+function saveFileToDB(filename, filepath, filesize) {
+  let fileToSave = new FileModel({
+    file_name: filename,
+    file_path: filepath,
+    file_size: filesize
+  });
+  return fileToSave;
+}
+
+
+function getAllFiles(req, res){
+  FileModel.find({}, function (err, files){
+    if(err) {
+      console.log(err);
+      res.status(500).json({
+        error : 'Database Error'
+      });
+    } else {
+      console.log(files);
+      res.status(200).json(files);
+    }
+  });
+}
+
+module.exports = { handleUpload, getAllFiles }
