@@ -15,7 +15,7 @@ var storage = multer.diskStorage({
 })
 
 // Add size limit to multer (20MB)
-var maxSize = 2000000;
+var maxSize = 5000000;
 const fileUploadHandler = multer({
   storage: storage,
   limits: {
@@ -32,7 +32,7 @@ function handleUpload(req, res){
         res.status( 413 ).json({
           error : 'The file is too large'
         });
-      } else if (fileValidation(req.file)){
+      } else if (fileValidation(req.file, res, req)){
         saveFileToDB(req.file.originalname, req.file.path, req.file.size).save()
           .then(game => {
             res.status( 200 ).send( req.file );
@@ -44,7 +44,7 @@ function handleUpload(req, res){
     })
 }
 
-function fileValidation(file){
+function fileValidation(file, res, req){
   // Example Verification after file is received - Already Saved File Handling missing
   if (file.mimetype.startsWith( 'audio/' )) {
     res.status( 422 ).json({

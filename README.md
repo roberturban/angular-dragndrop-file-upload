@@ -6,9 +6,9 @@
 - MongoDB
 - Angular CLI 7.1.4
 
-## Development Considerations
+## Documentation
 
-[Explanations and Considerations for Design](https://docs.google.com/document/d/1G2lXH7wtoCh5COHEEINZX7VXWK4_QKUIoNL7O0TQGZM/edit?usp=sharing)
+[Design Consideration and Documentation](https://docs.google.com/document/d/1G2lXH7wtoCh5COHEEINZX7VXWK4_QKUIoNL7O0TQGZM/edit?usp=sharing)
 
 ## Installation
 
