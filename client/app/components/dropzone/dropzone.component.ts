@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import * as Dropzone from 'dropzone';
 
 @Component({
   selector: 'app-dropzone',
@@ -8,11 +9,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class DropzoneComponent implements OnInit {
 
-  // private uploader = new Dropzone('#upload-widget', {
-  //
-  // });
+  private dropzone: Dropzone;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
 

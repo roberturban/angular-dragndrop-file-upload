@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve & node ./server/server.ts",
-    "dev": "ng serve & nodemon ./server/server.ts",
+    "start": "concurrently \"mongod\" \"ng serve --proxy-config proxy.conf.json --open\" \"node ./server/server.ts\"",
+    "dev": "concurrently \"mongod\" \"ng serve --proxy-config proxy.conf.json --open\" \"nodemon ./server/server.ts\"",
     "build": "ng build"
   },
   "private": true,
@@ -17,6 +17,7 @@
     "@angular/platform-browser": "~7.1.0",
     "@angular/platform-browser-dynamic": "~7.1.0",
     "@angular/router": "~7.1.0",
+    "@types/dropzone": "^5.0.4",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",

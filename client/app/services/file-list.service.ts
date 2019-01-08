@@ -8,14 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class FileListService {
 
-
-  private fileListAPIURI = 'http://localhost:4000/fileList';
-
   constructor(
     private http: HttpClient
   ) { }
 
   getFileList(): Observable<any> {
-    return this.http.get(`${this.fileListAPIURI}`);
+    return this.http.get('/api/fileList');
   }
 }

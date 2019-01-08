@@ -12,13 +12,13 @@
 
 ## Installation
 
-`npm install`
-
-Make sure a MongoDB server is started with `mongod`. Create a database 'angular-dropzone-file-upload' and collection 'files'.
+- `npm install`
+- Make sure MongoDB is installed and globally available via `mongod`.
+- Create a database `angular-dropzone-file-upload` and collection `files`
 
 ## Development Server
 
-- Run `npm start` for client and server to start.
+- Run `npm start` for database, client and server to start.
 - Navigate to `http://localhost:4200/`.
 - The app will automatically reload if you change any of the source files.
 - Run `npm run dev` for client and development server to start with `nodemon`.
