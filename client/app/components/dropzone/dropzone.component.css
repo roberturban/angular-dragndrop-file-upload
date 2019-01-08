@@ -1,0 +1,125 @@
+/* Drop Area */
+
+.dropzone-drop-area{
+  height: 100%;
+  padding: 30px;
+}
+
+.dropzone-upload-files-button{
+  margin-bottom: 20px;
+}
+
+.dropzone-container{
+  height: 100%;
+}
+
+dropzone > .dropzone.dz-wrapper{
+  height: 100%;
+}
+
+dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
+  display: none;
+}
+
+.overlay-container{
+
+}
+
+.dropzone-drop-overlay{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  border: 2px solid;
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #AAA;
+  opacity: 0.1;
+}
+
+.drop-here{
+  position: absolute;
+  display: flex;
+  color: #000;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: right;
+  bottom: 0;
+  width: 100%;
+}
+
+.dropzone-drop-overlay > .drop-here > p {
+  position: absolute;
+  margin: auto;
+  font-size: 30px;
+}
+
+.drop-here-icon{
+  background-image: url("../../../assets/icons/drag-icon.png");
+  height: 48px;
+  width: 64px;
+  background-size: cover;
+  margin-bottom: 10px;
+  animation-name: jump;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes jump {
+  from, 20%, 53%, 80%, to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+  }
+
+  40%, 43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0,-4px,0);
+    transform: translate3d(0,-4px,0);
+  }
+}
+
+.jump {
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+
+
+/* Upload File List */
+
+.modal {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1050;
+  overflow: hidden;
+  outline: 0;
+  display: flex;
+}
+
+.modal-dialog{
+  margin: 0px !important;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+}

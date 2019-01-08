@@ -1,2 +1,45 @@
-<div class="">
+<div id="dropzone-drop-area" class="dropzone-drop-area">
+
+  <button id="dropzone-upload-button" type="button" class="btn btn-primary dropzone-upload-files-button">Upload Files</button>
+
+  <dropzone
+    class="dropzone-container"
+    [config]="config"
+    (error)="onUploadError($event)"
+    (success)="onUploadSuccess($event)"
+    (dragEnter)="onDragEnter($event)"
+    (dragLeave)="onDragLeave($event)"
+    (drop)="onDropped($event)">
+
+    <div *ngIf="dragged" class="overlay-container">
+      <div class="dropzone-drop-overlay"></div>
+      <div class="drop-here">
+        <div class="drop-here-icon" aria-hidden="true"></div>
+        <p> Drop Files Here </p>
+      </div>
+    </div>
+
+    <app-file-list></app-file-list>
+  </dropzone>
+
+  <div id="dropzone-file-previews" class="file-preview-list">
+    <div class="modal" tabindex="-1" >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Uploading Files</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <fa name="chevron-down"></fa>
+            </button>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <fa name="close"></fa>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

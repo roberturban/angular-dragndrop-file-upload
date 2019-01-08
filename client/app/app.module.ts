@@ -12,6 +12,14 @@ import { FileListComponent } from './components/file-list/file-list.component';
 
 import { FileListService } from './services/file-list.service';
 
+import { DropzoneModule, DropzoneConfigInterface, DROPZONE_CONFIG } from 'ngx-dropzone-wrapper';
+
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  url: '/api/fileUpload'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,12 +30,18 @@ import { FileListService } from './services/file-list.service';
     FileListComponent
   ],
   imports: [
+    DropzoneModule,
     BrowserModule,
+    AngularFontAwesomeModule,
     HttpClientModule,
     AppRoutingModule
   ],
   providers: [
-    FileListService
+    FileListService,
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
+    }
   ],
   bootstrap: [AppComponent]
 })
