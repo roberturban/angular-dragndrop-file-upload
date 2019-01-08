@@ -15,31 +15,32 @@
       <div class="dropzone-drop-overlay"></div>
       <div class="drop-here">
         <div class="drop-here-icon" aria-hidden="true"></div>
-        <p> Drop Files Here </p>
+        <h5> Drop Files Here </h5>
       </div>
     </div>
 
-    <app-file-list></app-file-list>
+    <app-file-list [updateFileList]="updateFileList"></app-file-list>
   </dropzone>
 
-  <div id="dropzone-file-previews" class="file-preview-list">
-    <div class="modal" tabindex="-1" >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Uploading Files</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <fa name="chevron-down"></fa>
-            </button>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <fa name="close"></fa>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
+
+  <div class="modal" tabindex="-1" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Uploading Files</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <fa name="chevron-down"></fa>
+          </button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <fa name="close"></fa>
+          </button>
+        </div>
+        <div id="dropzone-file-previews" class="modal-body">
+
+
         </div>
       </div>
     </div>
   </div>
+
 </div>

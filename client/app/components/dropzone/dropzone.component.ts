@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { DropzoneDirective, DropzoneConfigInterface } from 'ngx-dropzone-wrapper';
 
+
 @Component({
   selector: 'app-dropzone',
   templateUrl: './dropzone.component.html',
@@ -9,9 +10,10 @@ import { DropzoneDirective, DropzoneConfigInterface } from 'ngx-dropzone-wrapper
 })
 export class DropzoneComponent implements OnInit {
 
-  private dragged = false;
   /* Workaround for multiple drag events due to File List*/
   private dragTarget = null;
+  private dragged = false;
+  private updateFileList = false;
 
   public config: DropzoneConfigInterface = {
     createImageThumbnails: false,
@@ -25,13 +27,9 @@ export class DropzoneComponent implements OnInit {
 
   @ViewChild(DropzoneDirective) directiveRef?: DropzoneDirective;
 
-  constructor(){
-  }
+  constructor(){}
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
 
   public onDragEnter(args: any): void {
     event.stopPropagation();
@@ -57,7 +55,7 @@ export class DropzoneComponent implements OnInit {
   }
 
   public onUploadSuccess(args: any): void {
-
+    this.updateFileList = !this.updateFileList;
   }
 
 

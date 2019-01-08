@@ -35,7 +35,11 @@ function handleUpload(req, res){
       } else if (fileValidation(req.file, res, req)){
         saveFileToDB(req.file.originalname, req.file.path, req.file.size).save()
           .then(game => {
-            res.status( 200 ).send( req.file );
+            // Mimic server repsonse time on localhost
+            var delayInMilliseconds = 3000;
+            setTimeout(function() {
+              res.status( 200 ).send( req.file );
+            }, delayInMilliseconds);
           })
           .catch(err => {
             res.status(400).send("Unable to save to Database");

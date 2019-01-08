@@ -10,7 +10,7 @@
 }
 
 .dropzone-container{
-  height: 100%;
+  height: calc(100% - 28px);
 }
 
 dropzone > .dropzone.dz-wrapper{
@@ -37,6 +37,7 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
   justify-content: center;
   background-color: #AAA;
   opacity: 0.1;
+  border-radius: .3rem;
 }
 
 .drop-here{
@@ -51,10 +52,12 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
   width: 100%;
 }
 
-.dropzone-drop-overlay > .drop-here > p {
+.dropzone-drop-overlay > .drop-here > h5 {
   position: absolute;
   margin: auto;
-  font-size: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 }
 
 .drop-here-icon{
@@ -108,13 +111,9 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
 /* Upload File List */
 
 .modal {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  z-index: 1050;
-  overflow: hidden;
-  outline: 0;
   display: flex;
+  width: 0px;
+height: 0px;
 }
 
 .modal-dialog{
@@ -122,4 +121,12 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
   bottom: 20px;
   right: 20px;
   position: fixed;
+}
+
+.modal-title{
+  margin-right: 30px;
+}
+
+.dz-preview{
+  display: flex;
 }

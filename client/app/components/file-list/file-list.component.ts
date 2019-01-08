@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewEncapsulation } from '@angular/core';
 import { FileListService } from '../../services/file-list.service';
 
 @Component({
@@ -7,13 +7,14 @@ import { FileListService } from '../../services/file-list.service';
   styleUrls: ['./file-list.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class FileListComponent implements OnInit {
+export class FileListComponent implements OnInit, OnChanges {
+
+  @Input()
+  private updateFileList: boolean;
 
   private fileList = [];
   private isLoadingFileList = true;
-
-  Math: any;
-
+  private Math: any;
   private tableHeaders = [
     {name: "#"},
     {name: "File Name"},
@@ -21,13 +22,22 @@ export class FileListComponent implements OnInit {
     {name: "File Size [MB]"},
   ];
 
-  constructor(
-    private fileListService: FileListService
-  ) {
+  constructor( private fileListService: FileListService ) {
     this.Math = Math;
   }
 
   ngOnInit() {
+    this.getList();
+  }
+
+  ngOnChanges(changes){
+    if(changes['updateFileList']){
+      this.getList();
+    }
+  }
+
+  public getList(){
+    console.log('getList in Component');
     this.fileListService.getFileList().subscribe(
       data => {
         this.fileList = data;
