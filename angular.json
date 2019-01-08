@@ -23,9 +23,12 @@
               "client/assets"
             ],
             "styles": [
-              "client/styles.css"
+              "client/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./client/assets/lib/dropzone.js"
+            ]
           },
           "configurations": {
             "production": {

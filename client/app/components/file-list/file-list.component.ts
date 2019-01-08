@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FileListService } from '../../services/file-list.service';
 
 @Component({
   selector: 'app-file-list',
   templateUrl: './file-list.component.html',
-  styleUrls: ['./file-list.component.css']
+  styleUrls: ['./file-list.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class FileListComponent implements OnInit {
 
@@ -14,7 +15,7 @@ export class FileListComponent implements OnInit {
   Math: any;
 
   private tableHeaders = [
-    {name: "File ID"},
+    {name: "#"},
     {name: "File Name"},
     {name: "File Path on Server"},
     {name: "File Size [MB]"},
@@ -31,12 +32,10 @@ export class FileListComponent implements OnInit {
       data => {
         this.fileList = data;
         this.isLoadingFileList = false;
-        console.log(this.fileList);
       },
       error => console.log(error),
       () => console.log('File list loaded')
     );
-    console.log(this.tableHeaders);
   }
 
 

@@ -5,11 +5,11 @@
     </th>
   </thead>
   <tbody>
-    <tr *ngFor="let file of fileList">
-      <th scope="row"> {{file.key}} </th>
-      <th > {{file.file_name}} </th>
-      <th > {{file.file_path}} </th>
-      <th > {{Math.round((file.file_size/100000) * 100) / 100 }} </th>
+    <tr *ngFor="let file of fileList; let i = index">
+      <th scope="row"> {{i+1}} </th>
+      <td> {{file.file_name}} </td>
+      <td> {{file.file_path}} </td>
+      <td> {{Math.round((file.file_size/100000) * 100) / 100 }} </td>
     </tr>
   </tbody>
 </table>
