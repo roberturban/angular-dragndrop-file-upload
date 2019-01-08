@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import * as Dropzone from 'dropzone';
+import { Component, Input, EventEmitter, ElementRef, OnInit, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-dropzone',
@@ -9,9 +8,7 @@ import * as Dropzone from 'dropzone';
 })
 export class DropzoneComponent implements OnInit {
 
-  private dropzone: Dropzone;
-
-  constructor() {
+  constructor(){
   }
 
   ngOnInit() {
