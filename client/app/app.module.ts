@@ -10,6 +10,8 @@ import { SideNavigationComponent } from './components/side-navigation/side-navig
 import { DropzoneComponent } from './components/dropzone/dropzone.component';
 import { FileListComponent } from './components/file-list/file-list.component';
 
+import { FileListService } from './services/file-list.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,9 @@ import { FileListComponent } from './components/file-list/file-list.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    FileListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
