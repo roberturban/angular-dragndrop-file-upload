@@ -2,6 +2,7 @@
 
   <button id="dropzone-upload-button" type="button" class="btn btn-primary dropzone-upload-files-button">Upload Files</button>
 
+  <!-- Dropzone Directive -->
   <dropzone
     class="dropzone-container"
     [config]="config"
@@ -9,8 +10,10 @@
     (success)="onUploadSuccess($event)"
     (dragEnter)="onDragEnter($event)"
     (dragLeave)="onDragLeave($event)"
-    (drop)="onDropped($event)">
+    (drop)="onDropped($event)"
+    (addedFile)="onFileAdded()">
 
+    <!--  Drag'n'Drop Overlay-->
     <div *ngIf="dragged" class="overlay-container">
       <div class="dropzone-drop-overlay"></div>
       <div class="drop-here">
@@ -19,25 +22,30 @@
       </div>
     </div>
 
+    <!-- Uploaded File List Component -->
     <app-file-list [updateFileList]="updateFileList"></app-file-list>
   </dropzone>
 
 
-  <div class="modal" tabindex="-1" >
+  <div [hidden]="!openUploadModal" class="modal" tabindex="-1" >
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Uploading Files</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <fa name="chevron-down"></fa>
-          </button>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <fa name="close"></fa>
-          </button>
+          <div class="modal-header-button-group">
+            <button *ngIf="!uploadModalMinified" type="button" class="close" (click)="minifyUploadModal()" aria-label="Close">
+              <fa name="chevron-up"></fa>
+            </button>
+            <button *ngIf="uploadModalMinified" type="button" class="close" (click)="minifyUploadModal()" aria-label="Close">
+              <fa name="chevron-down"></fa>
+            </button>
+            <button type="button" class="close" (click)="closeModal()" data-dismiss="modal" aria-label="Close">
+              <fa name="close"></fa>
+            </button>
+          </div>
         </div>
-        <div id="dropzone-file-previews" class="modal-body">
-
-
+        <div id="dropzone-file-previews" [hidden]="!uploadModalMinified" class="modal-body">
+          <!-- File Previews are rendered in here -->
         </div>
       </div>
     </div>

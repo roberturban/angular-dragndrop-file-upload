@@ -113,7 +113,7 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
 .modal {
   display: flex;
   width: 0px;
-height: 0px;
+  height: 0px;
 }
 
 .modal-dialog{
@@ -123,10 +123,23 @@ height: 0px;
   position: fixed;
 }
 
+.modal-content{
+  min-width: 400px;
+}
+
+.modal-header-button-group{
+  display: flex;
+}
+
 .modal-title{
   margin-right: 30px;
 }
 
 .dz-preview{
   display: flex;
+}
+
+.dz-details{
+  display: flex;
+  flex-direction: row;
 }

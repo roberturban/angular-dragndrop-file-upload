@@ -37,7 +37,6 @@ export class FileListComponent implements OnInit, OnChanges {
   }
 
   public getList(){
-    console.log('getList in Component');
     this.fileListService.getFileList().subscribe(
       data => {
         this.fileList = data;
