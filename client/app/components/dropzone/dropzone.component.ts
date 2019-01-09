@@ -16,9 +16,10 @@ export class DropzoneComponent implements OnInit {
   private updateFileList = false;
 
   /* Upload UI states */
-  private fileLoading = true;
+  private fileLoading = false;
   private successfulUpload = false;
   private openUploadModal = false;
+  private errorMessage = false;
   private uploadModalMinified = true;
 
   @ViewChild(DropzoneDirective) directiveRef: DropzoneDirective;
@@ -27,6 +28,7 @@ export class DropzoneComponent implements OnInit {
 
   public config: DropzoneConfigInterface = {
     createImageThumbnails: false,
+    paramName: "file",
     maxFiles: 1,
     autoReset: null,
     errorReset: null,
@@ -76,6 +78,7 @@ export class DropzoneComponent implements OnInit {
 
   public onDropped(args: any): void {
     this.openUploadModal = true;
+    this.fileLoading = true;
     if (this.dragTarget === event.target) {
       event.stopPropagation();
       event.preventDefault();
@@ -88,15 +91,16 @@ export class DropzoneComponent implements OnInit {
     this.updateFileList = !this.updateFileList;
     this.successfulUpload = true;
     // REFACTOR: Ugly workaound as Angular Bindings are not working with PreviewTemplate
-    document.querySelector('#dz-spinner').style.display="none";
-    document.querySelector('#dz-success').style.display="block";
+    document.getElementById('dz-spinner').style.display="none";
+    document.getElementById('dz-success').style.display="block";
   }
 
   public onUploadError(file, message){
-    var errorNode = document.querySelector('.dz-error');
+    this.errorMessage = true;
+    var errorNode = document.getElementById('dz-error-group');
     if(errorNode){
-      errorNode.querySelector('#dz-spinner').style.display="none";
-      errorNode.querySelector('#dz-error-group').style.display="block";
+      document.getElementById('dz-spinner').style.display="none";
+      document.getElementById('dz-error-group').style.display="block";
     }
   }
 
@@ -106,7 +110,8 @@ export class DropzoneComponent implements OnInit {
   }
 
   public closeModal(){
-    if (this.successfulUpload){
+    // TODO: If two files dropped, check that other file is not still loading
+    if (this.successfulUpload || this.errorMessage ){
       this.resetUIstate();
       this.directiveRef.reset();
     }
@@ -117,7 +122,8 @@ export class DropzoneComponent implements OnInit {
   }
 
   public resetUIstate(){
-    this.fileLoading = true;
+    this.fileLoading = false;
+    this.errorMessage = false;
     this.successfulUpload = false;
     this.openUploadModal = false;
     this.uploadModalMinified = true;

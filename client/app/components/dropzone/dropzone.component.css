@@ -157,8 +157,6 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
   flex-direction: column;
 }
 
-#dz-error-message{
-}
 
 #dz-success{
   display:none;
