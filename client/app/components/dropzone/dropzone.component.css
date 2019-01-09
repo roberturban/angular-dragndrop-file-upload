@@ -137,9 +137,31 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
 
 .dz-preview{
   display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .dz-details{
   display: flex;
   flex-direction: row;
+}
+
+.dz-icons{
+  display: flex;
+  flex-direction: column;
+}
+
+#dz-error-message{
+}
+
+#dz-success{
+  display:none;
+}
+
+#dz-error{
+  display:none;
+}
+
+#dz-error-group{
+  display: none;
 }
