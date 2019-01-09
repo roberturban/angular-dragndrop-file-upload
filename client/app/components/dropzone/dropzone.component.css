@@ -10,7 +10,7 @@
 }
 
 .dropzone-container{
-  height: calc(100% - 28px);
+  height: calc(100% + 28px);
 }
 
 dropzone > .dropzone.dz-wrapper{
@@ -27,11 +27,15 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
 
 .dropzone-drop-overlay{
   height: 100%;
+  bottom: 0px;
+  left: 30px;
+  right: 30px;
+  /* height: 100%; */
   position: absolute;
-  top: 0;
+  top: 87px;
   border: 2px solid;
   background-color: transparent;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,9 +51,11 @@ dropzone > .dropzone.dz-wrapper.dz-single .dz-message{
   text-align: center;
   flex-direction: column;
   align-items: center;
-  justify-content: right;
-  bottom: 0;
-  width: 100%;
+  /* justify-content: right; */
+  bottom: -70px;
+  /* width: 100%; */
+  left: 0;
+  right: 0;
 }
 
 .dropzone-drop-overlay > .drop-here > h5 {
